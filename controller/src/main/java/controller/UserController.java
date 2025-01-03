@@ -1,14 +1,11 @@
 package controller;
 
 import java.sql.SQLException;
-import java.util.*;
+import java.util.List;
 import java.util.logging.Logger;
-
-import org.mindrot.jbcrypt.BCrypt;
 
 import dao.UserDAO;
 import model.User;
-import utils.PasswordUtils;
 
 /**
  * 
@@ -38,14 +35,19 @@ public class UserController {
     }
     
  // Obtenir tous les utilisateurs
-//    public List<User> getAllUsers() throws SQLException {
-//        return userDAO.getAllUsers();
-//    }
-//
-//    // Obtenir un utilisateur par ID
+   public List<User> getAllUsers() throws SQLException {
+       return userDAO.getAllUsers();
+   }
+
+   // Obtenir un utilisateur par ID
 //    public User getUserById(int id) throws SQLException {
 //        return userDAO.getUserById(id);
 //    }
+
+   // Obtenir un utilisateur par role
+   public User getUserByRolUser(String role) throws SQLException {
+       return userDAO.getUserByRolUser(role);
+   }
 
     /**
      * Authenticate a user by username and password.
@@ -55,9 +57,7 @@ public class UserController {
      * @return true if authentication succeeds, otherwise false.
      */
     
-//    public User authenticate(String username, String password) {
-//        return userDAO.authenticate(username, password);
-//    }
+
     
     public User login(String username, String password) {
         User user = userDAO.authenticate(username, password);

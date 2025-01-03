@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.*;
 import java.util.logging.Logger;
 
-import org.mindrot.jbcrypt.BCrypt;
 
 import model.User;
 
@@ -55,33 +54,32 @@ public class UserDAO {
      * @return Optional of User.
      */
     
-    public User findByUsername(String username) {
-        String sql = "SELECT * FROM Users WHERE Username = ? AND archived = FALSE";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, username);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-            	if (rs.next()) {
-                    String hashedPassword = rs.getString("Password");
-                    String role = rs.getString("Role"); // Récupérer le rôle
-                    boolean archived = rs.getBoolean("archived");
-                    LOGGER.info("Utilisateur trouvé : " + username);
-
-                User user = new User(
-                        rs.getInt("ID_User"),
-                        rs.getString("Username"),
-                        rs.getString("Password"),
-                        role,
-                        archived
-                );
-                return user;
-            }
-        }
-            } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+    // public User findByUsername(String username) {
+    //     String sql = "SELECT * FROM Users WHERE Username = ? AND archived = FALSE";
+    //     try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+    //         stmt.setString(1, username);
+    //         ResultSet rs = stmt.executeQuery();
+    //         if (rs.next()) {
+    //         	if (rs.next()) {
+    //                 String hashedPassword = rs.getString("Password");
+    //                 String role = rs.getString("Role"); // Récupérer le rôle
+    //                 boolean archived = rs.getBoolean("archived");
+    //                 LOGGER.info("Utilisateur trouvé : " + username);
+            //             User user = new User(
+            //                     rs.getInt("ID_User"),
+            //                     rs.getString("Username"),
+            //                     rs.getString("Password"),
+            //                     role,
+            //                     archived
+            //             );
+            //             return user;
+            //         }
+            //     }
+    //         } catch (SQLException e) {
+    //         e.printStackTrace();
+    //     }
+    //     return null;
+    // }
 
     //
     
@@ -151,6 +149,7 @@ public class UserDAO {
         return users;
     }
     
+    // Mise à jour d'un utilisateur non archivés
     public void updateUser(User user) {
         String sql = "UPDATE Users SET Username = ?, Password = ?, Role = ?, archived = ? WHERE ID_User = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -163,5 +162,26 @@ public class UserDAO {
         }catch (SQLException e) {
             LOGGER.severe("Erreur lors de la mise à jour de l'utilisateur : " + e.getMessage());
         }
+    }
+
+    public User getUserByRolUser(String role) {
+        String sql = "SELECT * FROM Users WHERE Role = ? AND archived = FALSE";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, role);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new User(
+                            rs.getInt("ID_User"),
+                            rs.getString("Username"),
+                            rs.getString("Password"),
+                            rs.getString("Role"),
+                            rs.getBoolean("archived")
+                    );
+                }
+            }
+        }catch (SQLException e) {
+            LOGGER.severe("Erreur lors de la récupération de l'utilisateur par role : " + e.getMessage());
+        }
+        return null;
     }
 }
