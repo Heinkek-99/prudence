@@ -21,6 +21,10 @@ public class Teacher {
         this.archived = false;
     }
 
+    public Teacher() {
+        //TODO Auto-generated constructor stub
+    }
+
     public int getIdTeacher() {
         return idTeacher;
     }

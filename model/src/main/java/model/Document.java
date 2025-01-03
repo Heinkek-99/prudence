@@ -24,6 +24,12 @@ public class Document {
         this.archived = false;
     }
 
+
+
+    public Document() {
+        //TODO Auto-generated constructor stub
+    }
+
     // Getters et Setters
     public int getIdDocument() {
         return idDocument;

@@ -1,7 +1,7 @@
 package model;
 
 public class User {
-	private int id;
+	private int idUser;
     private String username;
     private String password;
     private String role;
@@ -21,8 +21,8 @@ public class User {
     }
 
  // Constructeur pour récupération complète
-    public User(int id, String username, String password, String role, boolean archived) {
-        this.id = id;
+    public User(int idUser, String username, String password, String role, boolean archived) {
+        this.idUser = idUser;
         this.username = username;
         this.password = password;
         this.role = role;
@@ -42,12 +42,12 @@ public class User {
     // Getters and Setters
 
 
-	public int getId() {
-		return id;
+	public int getIdUser() {
+		return idUser;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUSer(int idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getUsername() {

@@ -157,7 +157,7 @@ public class UserDAO {
             stmt.setString(2, user.getPassword()); // Toujours hacher avant
             stmt.setString(3, user.getRole());
             stmt.setBoolean(4, user.isArchived());
-            stmt.setInt(5, user.getId());
+            stmt.setInt(5, user.getIdUser());
             stmt.executeUpdate();
         }catch (SQLException e) {
             LOGGER.severe("Erreur lors de la mise à jour de l'utilisateur : " + e.getMessage());

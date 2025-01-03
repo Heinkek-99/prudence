@@ -16,7 +16,7 @@ public class Inscription {
     
     private Student student;                          // One-to-One relationship with Student
     private List<PaiementStudent> paiementStudent;  // One-to-Many relationship with PaiementStudents
-    private Etablissement etablissement;          // One-to-One relationship with Etablissement
+    // private Etablissement etablissement;          // One-to-One relationship with Etablissement
 	
     
     public int getIdInscription() {
@@ -80,11 +80,11 @@ public class Inscription {
 		this.paiementStudent = paiementStudent;
 	}
 
-	public Etablissement getEtablissement() {
-		return etablissement;
-	}
-	public void setEtablissement(Etablissement etablissement) {
-		this.etablissement = etablissement;
-	}
+	// public Etablissement getEtablissement() {
+	// 	return etablissement;
+	// }
+	// public void setEtablissement(Etablissement etablissement) {
+	// 	this.etablissement = etablissement;
+	// }
 
 }

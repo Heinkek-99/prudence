@@ -23,6 +23,10 @@ public class ClassLevel {
         this.archived = false;
     }
 
+    public ClassLevel() {
+        //TODO Auto-generated constructor stub
+    }
+
     // Getters et Setters
     public int getIdLevel() {
         return idLevel;

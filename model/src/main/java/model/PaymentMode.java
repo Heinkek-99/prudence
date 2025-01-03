@@ -7,10 +7,14 @@ public class PaymentMode {
     private String modeName;
     private boolean archived;
 
-    public PaymentMode(int idMode, String modeName) {
+    public PaymentMode(int idMode, String modeName, Boolean archived) {
         this.idMode = idMode;
         this.modeName = modeName;
         this.archived = false;
+    }
+
+    public PaymentMode() {
+        //TODO Auto-generated constructor stub
     }
 
     public int getIdMode() {

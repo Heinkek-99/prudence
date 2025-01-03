@@ -13,21 +13,28 @@ import java.util.*;
 public class Payment {
 	private int idPayment;
 	private int idStudent;  // Foreign key to Eleve
+    private int idMode;
     private String paymentType;
     private LocalDate paymentDate;
     private BigDecimal amount;
     private boolean archived;
     private Student student;                      // Many-to-One relationship with Eleve
+    private PaymentMode paymentMode;
     private List<TypePaiement> typesPaiement;   // One-to-Many relationship with TypePaiement
 
 
     // Constructeur
-    public Payment(int idPayment, int idStudent, BigDecimal amount, LocalDate paymentDate) {
+    public Payment(int idPayment, int idStudent, int idMode, BigDecimal amount, LocalDate paymentDate) {
         this.idPayment = idPayment;
         this.idStudent = idStudent;
+        this.idMode = idMode;
         this.setAmount(amount);
         this.setPaymentDate(paymentDate);
         this.archived = false;
+    }
+
+    public Payment() {
+        //TODO Auto-generated constructor stub
     }
 
     // Getters et Setters
@@ -45,6 +52,14 @@ public class Payment {
 
     public void setIdStudent(int idStudent) {
         this.idStudent = idStudent;
+    }
+
+    public int getIdMode() {
+        return idMode;
+    }
+
+    public void setIdMode(int idMode) {
+        this.idMode = idMode;
     }
 
     public boolean isArchived() {
@@ -86,6 +101,14 @@ public class Payment {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+    
+    public PaymentMode getPaymentMode() {
+        return paymentMode;
+    }
+
+    public void setPaymentMode(PaymentMode paymentMode) {
+        this.paymentMode = paymentMode;
+    }
 
 	public List<TypePaiement> getTypesPaiement() {
 		return typesPaiement;

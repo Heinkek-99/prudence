@@ -16,6 +16,10 @@ public class Logs {
         this.timestamp = timestamp;
     }
 
+    public Logs() {
+        //TODO Auto-generated constructor stub
+    }
+
     public int getId_log() {
         return id_log;
     }

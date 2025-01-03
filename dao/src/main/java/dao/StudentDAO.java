@@ -140,8 +140,8 @@ public class StudentDAO {
         student.setNationality(rs.getString("nationality"));
         student.setPhotoPath(rs.getString("photo_path"));
         student.setIdFamily(rs.getInt("id_family"));
-		student.setIdFamily(rs.getInt("id_inscription"));
-        student.setIdFamily(rs.getInt("id_classlevel"));
+		student.setIdInscription(rs.getInt("id_inscription"));
+        student.setIdClassLevel(rs.getInt("id_classlevel"));
 
         student.setArchived(rs.getBoolean("archived"));
 

@@ -32,6 +32,10 @@ public class Family {
         this.archived = false;
     }
 
+    public Family() {
+        //TODO Auto-generated constructor stub
+    }
+
     // Getters et Setters
     public int getIdFamily() {
         return idFamily;
